@@ -2,19 +2,27 @@ package pl.edu.wat.wcy.edziekanatserver.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
-@EntityScan
+@Entity
 public class Dzien {
 
     @Id
+    @GeneratedValue
     private long id;
 
     @NotNull
     private int name;
+
+    @OneToMany(mappedBy = "day")
+    private List<DziennyPlan> dayTimetables;
+
 }

@@ -3,9 +3,9 @@ package pl.edu.wat.wcy.edziekanatserver.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,4 +17,7 @@ public class NumerBloku {
 
     @NotNull
     private String name;
+
+    @OneToMany(mappedBy = "blocNo")
+    private List<BlokZajec> lessonBlocs;
 }

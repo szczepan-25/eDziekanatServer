@@ -5,7 +5,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +23,7 @@ public class Prowadzacy {
     private String lastName;
     @NotNull
     private String email;
+
+    @OneToMany(mappedBy = "lecturer")
+    private List<BlokZajec> lessonBlocs;
 }

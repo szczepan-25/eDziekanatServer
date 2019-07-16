@@ -3,9 +3,9 @@ package pl.edu.wat.wcy.edziekanatserver.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +16,14 @@ public class SemestralnyPlan {
     private long id;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "semestr_id")
     private Semestr term;
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "rok_id")
     private Rok year;
+
+    @OneToMany(mappedBy = "termTimetable")
+    private List<BlokZajec> lessonBlocs;
 }
